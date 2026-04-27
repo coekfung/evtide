@@ -5,3 +5,10 @@ version = 4
 [[package]]
 name = "evtide"
 version = "0.0.1"
+dependencies = [
+ "evtide-core",
+]
+
+[[package]]
+name = "evtide-core"
+version = "0.0.1"

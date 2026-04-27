@@ -1,14 +1,9 @@
-[package]
-name = "evtide"
-version = "0.0.1"
+[workspace]
+resolver = "3"
+members = ["evtide", "evtide-core"]
+
+[workspace.package]
 edition = "2024"
-description = "Experimental cross-platform event-camera I/O and visualization toolkit."
+license = "MIT"
 repository = "https://github.com/coekfung/evtide"
 homepage = "https://github.com/coekfung/evtide"
-documentation = "https://docs.rs/evtide"
-readme = "README.md"
-license = "MIT"
-keywords = ["event-camera", "neuromorphic", "vision"]
-categories = ["computer-vision", "multimedia"]
-
-[dependencies]

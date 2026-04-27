@@ -1,0 +1,14 @@
+[package]
+name = "evtide"
+version = "0.0.1"
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Cross-platform event-camera I/O and visualization toolkit."
+readme = "../README.md"
+keywords = ["event-camera", "neuromorphic", "vision", "prophesee"]
+categories = ["multimedia::encoding", "computer-vision"]
+
+[dependencies]
+evtide-core = { path = "../evtide-core", version = "0.0.1" }

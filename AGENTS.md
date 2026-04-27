@@ -1,5 +1,16 @@
 # Development Rules
 
+## Crate Layout
+
+```
+evtide/                         ← virtual manifest workspace
+├── evtide-core/                ← EventCd, EventExtTrigger (domain types, zero deps)
+├── evtide-codec/               ← sans-IO EVT stream format decoders (→ core)
+├── evtide-raw/                 ← .raw file reader (→ core, codec)
+├── evtide-usb/                 ← USB camera comms [planning] (→ core, codec)
+└── evtide/                     ← umbrella re-export (→ all above)
+```
+
 ## Conversational Style
 
 - Keep answers short and concise
@@ -23,6 +34,47 @@
 - Run tests: `cargo test` (from crate root)
 - If you create or modify a test, you MUST run that test and iterate until it passes.
 - NEVER commit unless the user explicitly asks
+
+## Changelog
+
+Location: `<crate>/CHANGELOG.md` (each sub-crate has its own).
+
+### Format
+
+Use these sections under `## [Unreleased]`:
+
+- `### Breaking Changes`
+- `### Added`
+- `### Changed`
+- `### Fixed`
+- `### Removed`
+
+### Rules
+
+- New entries ALWAYS go under `## [Unreleased]`
+- Append to existing subsections, do not create duplicates
+- NEVER modify already-released version sections
+- Before adding entries, read the full `[Unreleased]` section to see which subsections already exist
+
+## Releasing
+
+**Lockstep versioning**: All sub-crates always share the same version number.
+
+**Version semantics**:
+
+- `patch`: Bug fixes, new features, non-breaking changes
+- `minor`: API breaking changes
+
+### Steps
+
+1. Update `CHANGELOG.md` in each affected crate: finalize `[Unreleased]` with the new version and date
+2. Bump `version = "X.Y.Z"` in the `[package]` section of every sub-crate's `Cargo.toml`
+3. Bump `version = "X.Y.Z"` in every `[dependencies]` entry that references a workspace crate
+   (e.g., `evtide-core = { path = "../evtide-core", version = "X.Y.Z" }` in `evtide/Cargo.toml`)
+4. Commit: `git commit -m "chore: release vX.Y.Z"`
+5. Tag: `git tag vX.Y.Z`
+6. Publish in dependency order: `cargo publish -p evtide-core && cargo publish -p evtide`
+7. Add a new `## [Unreleased]` section to each crate's `CHANGELOG.md`
 
 ## Branch Workflow
 
