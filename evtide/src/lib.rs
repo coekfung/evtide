@@ -4,4 +4,5 @@
 //!
 //! Re-exports from all evtide sub-crates.
 
+pub use evtide_codec::{ByteDecoder, CodecEvent, TrailingByteError};
 pub use evtide_core::{EventCd, EventExtTrigger, Polarity};

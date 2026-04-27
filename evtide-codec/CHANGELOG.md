@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased]
+## [0.0.2] - 2026-04-27
 
 ### Added
 
@@ -11,3 +11,5 @@
 - `ByteDecoder` trait as uniform interface for all format decoders.
 - `TrailingByteError` for incomplete byte stream detection.
 - `assemble_words::<N>` reusable const-generic byte assembly function.
+
+## [0.0.1]

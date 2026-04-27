@@ -1,6 +1,6 @@
 [package]
 name = "evtide"
-version = "0.0.1"
+version = "0.0.2"
 edition.workspace = true
 license.workspace = true
 repository.workspace = true
@@ -11,4 +11,5 @@ keywords = ["event-camera", "neuromorphic", "vision", "prophesee"]
 categories = ["multimedia::encoding", "computer-vision"]
 
 [dependencies]
-evtide-core = { path = "../evtide-core", version = "0.0.1" }
+evtide-core = { path = "../evtide-core", version = "0.0.2" }
+evtide-codec = { path = "../evtide-codec", version = "0.0.2" }
