@@ -45,6 +45,8 @@ impl ByteDecoder for Evt3ByteDecoder {
     type Context = Evt3Context;
 
     fn decode(&mut self, bytes: &[u8], on_event: &mut impl FnMut(CodecEvent)) -> usize {
+        // EVT3's 16-bit words need at most 1 buffered byte, so the assembly
+        // is trivial and does not benefit from `assemble_words::<2>`.
         let mut consumed = 0;
         let mut remaining = bytes;
 

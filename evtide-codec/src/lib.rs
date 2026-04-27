@@ -7,7 +7,10 @@
 //! allocate.
 
 pub mod evt2;
+pub mod evt21;
 pub mod evt3;
+
+mod assemble;
 
 use evtide_core::{EventCd, EventExtTrigger};
 
