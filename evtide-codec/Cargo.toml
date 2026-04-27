@@ -1,0 +1,13 @@
+[package]
+name = "evtide-codec"
+version = "0.0.1"
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Sans-IO decoders for event-camera data formats."
+keywords = ["event-camera", "neuromorphic", "codec", "evt3"]
+categories = ["multimedia::encoding"]
+
+[dependencies]
+evtide-core = { path = "../evtide-core", version = "0.0.1" }

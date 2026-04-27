@@ -10,5 +10,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "evtide-codec"
+version = "0.0.1"
+dependencies = [
+ "evtide-core",
+]
+
+[[package]]
 name = "evtide-core"
 version = "0.0.1"

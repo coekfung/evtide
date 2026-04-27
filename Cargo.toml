@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["evtide", "evtide-core"]
+members = ["evtide", "evtide-codec", "evtide-core"]
 
 [workspace.package]
 edition = "2024"
