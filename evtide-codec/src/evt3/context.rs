@@ -281,9 +281,9 @@ mod tests {
     #[test]
     fn decodes_trigger_event() {
         let events = decode(&[
-            0x8000, // TIME_HIGH = 0
-            0x600A, // TIME_LOW = 10
-            0xA801, // EXT_TRIGGER val=1, id=0
+            (0x8u16 << 12),         // TIME_HIGH = 0
+            (0x6u16 << 12) | 10u16, // TIME_LOW = 10
+            (0xAu16 << 12) | 1u16,  // EXT_TRIGGER val=1, id=0
         ]);
         assert_eq!(events.len(), 1);
         let CodecEvent::Trigger(t) = &events[0] else {

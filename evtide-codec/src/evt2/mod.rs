@@ -127,7 +127,7 @@ mod tests {
         let mut events = Vec::new();
 
         let c1 = ByteDecoder::decode(&mut decoder, &bytes[..6], &mut |e| events.push(e));
-        assert_eq!(c1, 4);
+        assert_eq!(c1, 6);
 
         let c2 = ByteDecoder::decode(&mut decoder, &bytes[6..], &mut |e| events.push(e));
         assert_eq!(c2, 2);

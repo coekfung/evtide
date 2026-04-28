@@ -103,7 +103,7 @@ mod tests {
 
     #[test]
     fn time_high() {
-        let word = 0x8ABCDEF00000000;
+        let word = (0x8u64 << 60) | (0xABCDEFu64 << 32);
         assert_eq!(time_high_ts(word), 0xABCDEF);
     }
 

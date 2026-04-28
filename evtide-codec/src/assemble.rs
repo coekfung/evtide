@@ -29,9 +29,11 @@ pub(crate) fn assemble_words<const N: usize>(
         let leftover = chunks.remainder();
         pending[..leftover.len()].copy_from_slice(leftover);
         *pending_len = leftover.len() as u8;
+        consumed += leftover.len();
     } else {
         pending[*pending_len as usize..*pending_len as usize + bytes.len()].copy_from_slice(bytes);
         *pending_len += bytes.len() as u8;
+        consumed = bytes.len();
     }
 
     consumed
@@ -61,7 +63,7 @@ mod tests {
         let mut words = Vec::new();
 
         let c1 = assemble_words::<4>(&mut pending, &mut plen, &bytes[..3], |w| words.push(w));
-        assert_eq!(c1, 0);
+        assert_eq!(c1, 3);
         assert_eq!(plen, 3);
 
         let c2 = assemble_words::<4>(&mut pending, &mut plen, &bytes[3..], |w| words.push(w));

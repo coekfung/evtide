@@ -151,7 +151,7 @@ mod tests {
 
     #[test]
     fn vect_base_x() {
-        let word = 0b0011_1_0000001010u16;
+        let word = (0x3u16 << 12) | (1u16 << 11) | 10u16;
         assert_eq!(vect_base_x_x(word), 10);
         assert_eq!(vect_base_x_polarity(word), Polarity::On);
     }

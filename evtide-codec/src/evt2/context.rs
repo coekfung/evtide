@@ -162,15 +162,14 @@ mod tests {
     #[test]
     fn timestamp_combines_time_high_and_lsb() {
         let events = decode(&[
-            0x8ABCDEF,                                // TIME_HIGH = 0xABCDEF (28 bits)
-            0b0000_000011_00000000000_00000000000u32, // CD_OFF ts=3
+            (0x8u32 << 28) | 0xABCDEF, // TIME_HIGH = 0xABCDEF
+            (3u32 << 22),              // CD_OFF ts=3
         ]);
         assert_eq!(events.len(), 1);
         let CodecEvent::Cd(e) = &events[0] else {
             panic!("expected Cd");
         };
-        // timestamp = (0xABCDEF << 6) | 3 = 0x2AF37BC << 2?
-        // Actually: 0xABCDEF * 64 + 3
+        // timestamp = (0xABCDEF << 6) | 3
         assert_eq!(e.timestamp, (0xABCDEFu64 << 6) | 3);
     }
 

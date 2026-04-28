@@ -1,5 +1,12 @@
 # Changelog
 
+## [Unreleased]
+
+### Fixed
+
+- `ByteDecoder::decode` consumed-byte count: `assemble_words` and the EVT3 decoder now count internally buffered bytes as consumed, matching the documented contract.
+- Incorrect word bit layouts in EVT2, EVT2.1, and EVT3 decoder test suites.
+
 ## [0.0.2] - 2026-04-27
 
 ### Added

@@ -185,9 +185,9 @@ mod tests {
     #[test]
     fn state_not_set_before_first_time_high() {
         let events = decode(&[
-            0x0000_0000_0032_0000, // EVT_NEG y=50 — ignored
-            0x8000_0000_0000_0000, // TIME_HIGH
-            0x0000_0000_0000_0000, // EVT_NEG all zeros
+            (50u64 << 32),  // EVT_NEG y=50 — ignored
+            (0x8u64 << 60), // TIME_HIGH
+            1u64,           // EVT_NEG x=0, y=0, valid bit 0
         ]);
         assert_eq!(events.len(), 1);
         let CodecEvent::Cd(e) = &events[0] else {

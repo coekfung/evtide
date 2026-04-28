@@ -71,6 +71,7 @@ impl ByteDecoder for Evt3ByteDecoder {
 
         if let Some(&last) = chunks.remainder().first() {
             self.pending = Some(last);
+            consumed += 1;
         }
 
         consumed
@@ -148,7 +149,7 @@ mod tests {
         let mut events = Vec::new();
 
         let c1 = ByteDecoder::decode(&mut decoder, &bytes[..5], &mut |e| events.push(e));
-        assert_eq!(c1, 4);
+        assert_eq!(c1, 5);
 
         let c2 = ByteDecoder::decode(&mut decoder, &bytes[5..], &mut |e| events.push(e));
         assert_eq!(c2, 3);
